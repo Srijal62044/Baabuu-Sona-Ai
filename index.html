@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Baabuu Sona AI 💕</title>
+  <meta name="description" content="Baabuu Sona AI — Your personal AI companion. Chat, play games, and build a real bond!" />
+  <meta property="og:title" content="Baabuu Sona AI 💕" />
+  <meta property="og:description" content="Your personal AI companion. Always here for you." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash" class="screen active">
+  <div class="splash-content">
+    <div class="splash-logo">💕</div>
+    <h1 class="splash-title">Baabuu Sona AI</h1>
+    <p class="splash-tagline">Tera personal AI companion 🌟</p>
+    <div class="splash-loader"><div class="loader-bar"></div></div>
+  </div>
+</div>
+
+<!-- ONBOARDING SCREEN -->
+<div id="onboarding" class="screen">
+  <div class="onboarding-container">
+    <!-- Step 1: Name -->
+    <div class="onboard-step active" id="step-name">
+      <div class="onboard-emoji">👋</div>
+      <h2>Heyy! Tumhara naam kya hai?</h2>
+      <p class="onboard-sub">Apna naam batao — yahi se hamari dosti shuru hogi!</p>
+      <input type="text" id="input-name" class="onboard-input" placeholder="Apna naam likho..." maxlength="20" />
+      <button class="btn-primary" onclick="nextStep('step-type')">Aage Chalo →</button>
+    </div>
+
+    <!-- Step 2: Companion Type -->
+    <div class="onboard-step" id="step-type">
+      <div class="onboard-emoji">💫</div>
+      <h2>Kaisa companion chahiye?</h2>
+      <p class="onboard-sub">Choose karo apna ideal companion!</p>
+      <div class="card-grid">
+        <div class="type-card" data-value="girlfriend" onclick="selectCard(this,'type')">
+          <div class="card-emoji">💗</div>
+          <div class="card-label">Virtual Girlfriend</div>
+          <div class="card-sub">Loving, caring, sweet</div>
+        </div>
+        <div class="type-card" data-value="boyfriend" onclick="selectCard(this,'type')">
+          <div class="card-emoji">💙</div>
+          <div class="card-label">Virtual Boyfriend</div>
+          <div class="card-sub">Protective, fun, strong</div>
+        </div>
+        <div class="type-card" data-value="bestfriend" onclick="selectCard(this,'type')">
+          <div class="card-emoji">🤝</div>
+          <div class="card-label">Best Friend</div>
+          <div class="card-sub">Chill, real, no drama</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="nextStep('step-companion-name')">Next →</button>
+    </div>
+
+    <!-- Step 3: Companion Name -->
+    <div class="onboard-step" id="step-companion-name">
+      <div class="onboard-emoji">✨</div>
+      <h2>Companion ka naam kya rakhu?</h2>
+      <p class="onboard-sub">Jo bhi bol do — woh hamesha yahi naam se jaanenge!</p>
+      <input type="text" id="input-companion-name" class="onboard-input" placeholder="Companion ka naam..." maxlength="20" />
+      <button class="btn-primary" onclick="nextStep('step-personality')">Awesome! →</button>
+    </div>
+
+    <!-- Step 4: Personality -->
+    <div class="onboard-step" id="step-personality">
+      <div class="onboard-emoji">🎭</div>
+      <h2>Kaunsi personality pasand hai?</h2>
+      <div class="personality-grid">
+        <div class="personality-card" data-value="sweet" onclick="selectCard(this,'personality')">🍯 Sweet</div>
+        <div class="personality-card" data-value="funny" onclick="selectCard(this,'personality')">😂 Funny</div>
+        <div class="personality-card" data-value="caring" onclick="selectCard(this,'personality')">🤗 Caring</div>
+        <div class="personality-card" data-value="motivational" onclick="selectCard(this,'personality')">🔥 Motivational</div>
+        <div class="personality-card" data-value="savage" onclick="selectCard(this,'personality')">😈 Savage</div>
+        <div class="personality-card" data-value="emotional" onclick="selectCard(this,'personality')">💭 Emotional</div>
+        <div class="personality-card" data-value="chill" onclick="selectCard(this,'personality')">😎 Chill</div>
+        <div class="personality-card" data-value="supportive" onclick="selectCard(this,'personality')">💪 Supportive</div>
+      </div>
+      <button class="btn-primary" onclick="nextStep('step-avatar')">Sahi hai! →</button>
+    </div>
+
+    <!-- Step 5: Avatar -->
+    <div class="onboard-step" id="step-avatar">
+      <div class="onboard-emoji">🎨</div>
+      <h2>Avatar choose karo!</h2>
+      <p class="onboard-sub">Tera companion aisa dikhega!</p>
+      <div class="avatar-grid">
+        <div class="avatar-option" data-value="av1" onclick="selectCard(this,'avatar')">🧑</div>
+        <div class="avatar-option" data-value="av2" onclick="selectCard(this,'avatar')">👩</div>
+        <div class="avatar-option" data-value="av3" onclick="selectCard(this,'avatar')">🧑‍🦱</div>
+        <div class="avatar-option" data-value="av4" onclick="selectCard(this,'avatar')">👩‍🦰</div>
+        <div class="avatar-option" data-value="av5" onclick="selectCard(this,'avatar')">🧑‍🦳</div>
+        <div class="avatar-option" data-value="av6" onclick="selectCard(this,'avatar')">🦸</div>
+        <div class="avatar-option" data-value="av7" onclick="selectCard(this,'avatar')">🧚</div>
+        <div class="avatar-option" data-value="av8" onclick="selectCard(this,'avatar')">🧙</div>
+      </div>
+      <button class="btn-primary" onclick="nextStep('step-theme')">Almost done! →</button>
+    </div>
+
+    <!-- Step 6: Theme -->
+    <div class="onboard-step" id="step-theme">
+      <div class="onboard-emoji">🎨</div>
+      <h2>Apna vibe choose karo!</h2>
+      <div class="theme-grid">
+        <div class="theme-option" data-value="dark" onclick="selectCard(this,'theme')">
+          <div class="theme-preview dark-prev"></div>
+          <span>Dark</span>
+        </div>
+        <div class="theme-option" data-value="pink" onclick="selectCard(this,'theme')">
+          <div class="theme-preview pink-prev"></div>
+          <span>Pink</span>
+        </div>
+        <div class="theme-option" data-value="purple" onclick="selectCard(this,'theme')">
+          <div class="theme-preview purple-prev"></div>
+          <span>Purple</span>
+        </div>
+        <div class="theme-option" data-value="cyber" onclick="selectCard(this,'theme')">
+          <div class="theme-preview cyber-prev"></div>
+          <span>Cyber</span>
+        </div>
+        <div class="theme-option" data-value="minimal" onclick="selectCard(this,'theme')">
+          <div class="theme-preview minimal-prev"></div>
+          <span>Minimal</span>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="finishOnboarding()">Let's Go! 🚀</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="screen">
+
+  <!-- NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" onclick="showTab('chat')" data-tab="chat">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label">Chat</span>
+    </button>
+    <button class="nav-btn" onclick="showTab('games')" data-tab="games">
+      <span class="nav-icon">🎮</span>
+      <span class="nav-label">Games</span>
+    </button>
+    <button class="nav-btn" onclick="showTab('daily')" data-tab="daily">
+      <span class="nav-icon">🌅</span>
+      <span class="nav-label">Daily</span>
+    </button>
+    <button class="nav-btn" onclick="showTab('mood')" data-tab="mood">
+      <span class="nav-icon">💜</span>
+      <span class="nav-label">Mood</span>
+    </button>
+    <button class="nav-btn" onclick="showTab('profile')" data-tab="profile">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">Profile</span>
+    </button>
+  </nav>
+
+  <!-- CHAT TAB -->
+  <div id="tab-chat" class="tab-content active">
+    <div class="chat-header glass">
+      <div class="companion-info">
+        <div class="companion-avatar-wrap">
+          <span id="header-avatar" class="companion-avatar">🧑</span>
+          <span class="online-dot"></span>
+        </div>
+        <div class="companion-details">
+          <div id="header-name" class="companion-name">Loading...</div>
+          <div class="companion-status">Online • typing...</div>
+        </div>
+      </div>
+      <div class="chat-actions">
+        <button class="icon-btn" onclick="toggleVoice()" id="voice-toggle" title="Voice">🎤</button>
+        <button class="icon-btn" onclick="showTab('profile')" title="Profile">⚙️</button>
+      </div>
+    </div>
+
+    <div id="chat-messages" class="chat-messages">
+      <div class="chat-date-divider">Today</div>
+    </div>
+
+    <div class="chat-input-area glass">
+      <div class="voice-indicator" id="voice-indicator" style="display:none">
+        <div class="voice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+        <span>Bol raha/rahi ho...</span>
+      </div>
+      <div class="input-row">
+        <button class="mic-btn" id="mic-btn" onclick="toggleMic()">🎤</button>
+        <textarea id="msg-input" class="msg-input" placeholder="Kuch bolo yaar..." rows="1" onkeydown="handleMsgKey(event)" oninput="autoResizeInput(this)"></textarea>
+        <button class="send-btn" onclick="sendMessage()">
+          <span class="send-icon">➤</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAMES TAB -->
+  <div id="tab-games" class="tab-content">
+    <div class="tab-header glass">
+      <h2>🎮 Games Hub</h2>
+      <div id="game-score-badge" class="score-badge">Score: 0</div>
+    </div>
+
+    <div id="games-home" class="games-home">
+      <div class="games-grid">
+        <div class="game-card" onclick="startGame('truth_or_dare')">
+          <div class="game-icon">🎯</div>
+          <div class="game-name">Truth or Dare</div>
+          <div class="game-desc">Safe & fun!</div>
+        </div>
+        <div class="game-card" onclick="startGame('would_you_rather')">
+          <div class="game-icon">🤔</div>
+          <div class="game-name">Would You Rather</div>
+          <div class="game-desc">Impossible choices</div>
+        </div>
+        <div class="game-card" onclick="startGame('compatibility_quiz')">
+          <div class="game-icon">💑</div>
+          <div class="game-name">Compatibility Quiz</div>
+          <div class="game-desc">How compatible?</div>
+        </div>
+        <div class="game-card" onclick="startGame('guess_my_mood')">
+          <div class="game-icon">🔮</div>
+          <div class="game-name">Guess My Mood</div>
+          <div class="game-desc">Mind reader!</div>
+        </div>
+        <div class="game-card" onclick="startGame('this_or_that')">
+          <div class="game-icon">⚡</div>
+          <div class="game-name">This or That</div>
+          <div class="game-desc">Quick picks</div>
+        </div>
+        <div class="game-card" onclick="startGame('compliment_battle')">
+          <div class="game-icon">💝</div>
+          <div class="game-name">Compliment Battle</div>
+          <div class="game-desc">Spread love!</div>
+        </div>
+        <div class="game-card" onclick="startGame('personality_quiz')">
+          <div class="game-icon">🧠</div>
+          <div class="game-name">Personality Quiz</div>
+          <div class="game-desc">Know yourself</div>
+        </div>
+        <div class="game-card" onclick="startGame('friendship_challenge')">
+          <div class="game-icon">🤝</div>
+          <div class="game-name">Friendship Challenge</div>
+          <div class="game-desc">Bond builder</div>
+        </div>
+        <div class="game-card" onclick="startGame('memory_challenge')">
+          <div class="game-icon">🧩</div>
+          <div class="game-name">Memory Challenge</div>
+          <div class="game-desc">Test your memory</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-session" class="game-session" style="display:none">
+      <div class="game-session-card glass">
+        <div id="game-type-label" class="game-type-label">Truth or Dare</div>
+        <div id="game-question" class="game-question">Loading...</div>
+        <div id="game-options" class="game-options"></div>
+        <div class="game-actions">
+          <button class="btn-secondary" onclick="nextGameQuestion()">Next ➜</button>
+          <button class="btn-outline" onclick="exitGame()">Exit</button>
+        </div>
+        <div class="game-round-score">Round Score: <span id="round-score">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY TAB -->
+  <div id="tab-daily" class="tab-content">
+    <div class="tab-header glass">
+      <h2>🌅 Daily Zone</h2>
+      <div id="streak-display" class="streak-display">🔥 0 day streak</div>
+    </div>
+
+    <div class="daily-content">
+      <div class="daily-card glass motivation-card">
+        <div class="daily-card-icon">✨</div>
+        <div class="daily-card-label">Aaj ki Motivation</div>
+        <div id="daily-motivation" class="daily-card-text">Loading...</div>
+      </div>
+
+      <div class="daily-card glass question-card">
+        <div class="daily-card-icon">💭</div>
+        <div class="daily-card-label">Aaj ka Sawal</div>
+        <div id="daily-question" class="daily-card-text">Loading...</div>
+      </div>
+
+      <div class="daily-card glass challenge-card">
+        <div class="daily-card-icon">🎯</div>
+        <div class="daily-card-label">Aaj ka Challenge</div>
+        <div id="daily-challenge" class="daily-card-text">Loading...</div>
+      </div>
+
+      <div class="daily-checkin glass" id="checkin-area">
+        <div class="checkin-title">📋 Daily Check-in</div>
+        <textarea id="checkin-input" class="checkin-textarea" placeholder="Aaj kaisa tha din? Kuch bhi likh sakte ho..."></textarea>
+        <button class="btn-primary" id="checkin-btn" onclick="submitCheckIn()">Check In ✅</button>
+        <div id="checkin-done" class="checkin-done" style="display:none">
+          <div class="checkin-done-emoji">🎉</div>
+          <div>Aaj ka check-in ho gaya!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOOD TAB -->
+  <div id="tab-mood" class="tab-content">
+    <div class="tab-header glass">
+      <h2>💜 Mood Tracker</h2>
+    </div>
+
+    <div class="mood-content">
+      <div class="mood-log glass">
+        <div class="mood-log-title">Aaj ka mood kya hai?</div>
+        <div class="mood-emoji-grid">
+          <div class="mood-emoji-option" data-mood="happy" data-score="5" onclick="selectMoodEmoji(this)">😊<br><small>Happy</small></div>
+          <div class="mood-emoji-option" data-mood="excited" data-score="5" onclick="selectMoodEmoji(this)">🤩<br><small>Excited</small></div>
+          <div class="mood-emoji-option" data-mood="chill" data-score="4" onclick="selectMoodEmoji(this)">😌<br><small>Chill</small></div>
+          <div class="mood-emoji-option" data-mood="okay" data-score="3" onclick="selectMoodEmoji(this)">😐<br><small>Okay</small></div>
+          <div class="mood-emoji-option" data-mood="anxious" data-score="2" onclick="selectMoodEmoji(this)">😰<br><small>Anxious</small></div>
+          <div class="mood-emoji-option" data-mood="sad" data-score="2" onclick="selectMoodEmoji(this)">😢<br><small>Sad</small></div>
+          <div class="mood-emoji-option" data-mood="angry" data-score="1" onclick="selectMoodEmoji(this)">😤<br><small>Angry</small></div>
+          <div class="mood-emoji-option" data-mood="tired" data-score="2" onclick="selectMoodEmoji(this)">😴<br><small>Tired</small></div>
+        </div>
+        <textarea id="mood-note" class="mood-note-input" placeholder="Kuch likhna hai? (optional)"></textarea>
+        <button class="btn-primary" onclick="logMood()">Log Mood 💜</button>
+      </div>
+
+      <div class="mood-history glass">
+        <div class="mood-history-title">Recent Moods</div>
+        <div id="mood-list" class="mood-list">
+          <div class="empty-state">Abhi koi mood log nahi hai. Upar se shuru karo! 💜</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE TAB -->
+  <div id="tab-profile" class="tab-content">
+    <div class="tab-header glass">
+      <h2>👤 Profile</h2>
+    </div>
+
+    <div class="profile-content">
+      <div class="profile-card glass">
+        <div id="profile-avatar" class="profile-avatar-large">🧑</div>
+        <div id="profile-username" class="profile-username">Loading...</div>
+        <div id="profile-companion-info" class="profile-companion-info">Setup karo apna companion ✨</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card glass">
+          <div class="stat-icon">🔥</div>
+          <div id="stat-streak" class="stat-value">0</div>
+          <div class="stat-label">Day Streak</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">💬</div>
+          <div id="stat-messages" class="stat-value">0</div>
+          <div class="stat-label">Messages</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">💖</div>
+          <div id="stat-bond" class="stat-value">1</div>
+          <div class="stat-label">Bond Level</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">🎮</div>
+          <div id="stat-games" class="stat-value">0</div>
+          <div class="stat-label">Games Played</div>
+        </div>
+      </div>
+
+      <div class="achievements-section glass">
+        <div class="section-title">🏆 Achievements</div>
+        <div id="achievements-list" class="achievements-list">
+          <div class="empty-state">Koi achievements nahi abhi. Baat karo, games khelo! 🎮</div>
+        </div>
+      </div>
+
+      <div class="theme-section glass">
+        <div class="section-title">🎨 Theme</div>
+        <div class="theme-selector-row">
+          <button class="theme-btn" onclick="changeTheme('dark')">🌑 Dark</button>
+          <button class="theme-btn" onclick="changeTheme('pink')">🌸 Pink</button>
+          <button class="theme-btn" onclick="changeTheme('purple')">🔮 Purple</button>
+          <button class="theme-btn" onclick="changeTheme('cyber')">⚡ Cyber</button>
+          <button class="theme-btn" onclick="changeTheme('minimal')">🤍 Minimal</button>
+        </div>
+      </div>
+
+      <div class="privacy-notice glass">
+        <div class="privacy-title">🔒 Privacy Notice</div>
+        <p class="privacy-text">Conversations may be stored to improve your experience. Koi bhi personal info collect nahi ki jaati. Anonymous user ID use hoti hai. Apna real naam ya sensitive info share mat karo.</p>
+      </div>
+
+      <button class="btn-danger" onclick="resetApp()">🗑️ Reset Everything</button>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENT TOAST -->
+<div id="achievement-toast" class="achievement-toast" style="display:none">
+  <div class="toast-content">
+    <div id="toast-icon" class="toast-icon">🏆</div>
+    <div class="toast-text">
+      <div class="toast-title">New Achievement!</div>
+      <div id="toast-achievement" class="toast-achievement">...</div>
+    </div>
+  </div>
+</div>
+
+<script src="/src/script.js"></script>
+</body>
+</html>
