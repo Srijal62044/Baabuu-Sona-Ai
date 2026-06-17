@@ -1,9 +1,4 @@
-// ===== CONFIG =====
-// ⚠️ GITHUB PAGES USERS — paste your Replit production URL here:
-//   1. In Replit, click the "Deploy" button (top right)
-//   2. Go to the "Deployments" tab
-//   3. Copy the URL that ends in ".replit.app"
-//   4. Paste it below (remove the placeholder text)
+
 const REPLIT_BACKEND = 'https://companion-core--kumarsrijal734.replit.app';
 
 const isGitHubPages = window.location.hostname.endsWith('github.io')
