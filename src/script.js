@@ -1,5 +1,5 @@
 // ===== CONFIG =====
-const API_BASE = '/api';
+const API_BASE = 'https://companion-core--kumarsrijal734.replit.app/';
 
 // ===== STATE =====
 let state = {
